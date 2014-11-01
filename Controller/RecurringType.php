@@ -1,11 +1,11 @@
 <?php
 
 
-class RecurringTypeController
+class Controller_RecurringType
 {
     private $recurringTypeModel;
 
-    public function __construct(RecurringTypeModel $recurringTypeModel)
+    public function __construct(Model_RecurringType $recurringTypeModel)
     {
         $this->recurringTypeModel = $recurringTypeModel;
     }

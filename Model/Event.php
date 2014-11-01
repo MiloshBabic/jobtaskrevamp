@@ -6,7 +6,7 @@
  * Time: 14:29
  */
 
-class EventModel
+class Model_Event
 {
     private $title;
     private $description;

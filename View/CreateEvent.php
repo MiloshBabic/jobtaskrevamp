@@ -6,13 +6,13 @@
  * Time: 14:28
  */
 
-class CreateEventView
+class View_CreateEvent
 {
     private $eventController;
     private $eventModel;
     private $recurringTypeModel;
 
-    public function __construct(EventController $eventController, EventModel $eventModel,  RecurringTypeModel $recurringTypeModel)
+    public function __construct(Controller_Event $eventController, Model_Event $eventModel,  Model_RecurringType $recurringTypeModel)
     {
         $this->eventController = $eventController;
         $this->eventModel = $eventModel;

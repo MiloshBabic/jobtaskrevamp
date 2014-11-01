@@ -6,11 +6,11 @@
  * Time: 16:52
  */
 
-class ShowEventController {
+class Controller_ShowEvent {
 
     private $eventModel;
 
-    public function __construct(EventModel $eventModel)
+    public function __construct(Model_Event $eventModel)
     {
         $this->eventModel = $eventModel;
     }

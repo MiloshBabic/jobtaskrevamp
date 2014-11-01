@@ -6,12 +6,12 @@
  * Time: 14:29
  */
 
-class EventController
+class Controller_Event
 {
 
     private $eventModel;
 
-    public function __construct(EventModel $eventModel)
+    public function __construct(Model_Event $eventModel)
     {
         $this->eventModel = $eventModel;
     }
@@ -51,7 +51,7 @@ class EventController
             /*
              *  Send model a signal to start generating events and go back to index
              */
-            EventGenerator::generateEvents($this->eventModel);
+            Utility_EventGenerator::generateEvents($this->eventModel);
         }
 
         header("Location: index.php");

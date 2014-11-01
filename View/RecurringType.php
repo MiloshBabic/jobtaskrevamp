@@ -6,12 +6,12 @@
  * Time: 14:29
  */
 
-class RecurringTypeView
+class View_RecurringType
 {
     private $recurringTypeController;
     private $recurringTypeModel;
 
-    public function __construct(RecurringTypeController $recurringTypeController, RecurringTypeModel $recurringTypeModel)
+    public function __construct(Controller_RecurringType $recurringTypeController, Model_RecurringType $recurringTypeModel)
     {
         $this->recurringTypeModel = $recurringTypeModel;
         $this->recurringTypeController = $recurringTypeController;

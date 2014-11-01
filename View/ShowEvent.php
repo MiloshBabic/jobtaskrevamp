@@ -7,12 +7,12 @@
  */
 
 
-class ShowEventView {
+class View_ShowEvent {
 
     private $eventModel;
     private $eventController;
 
-    public function __construct(ShowEventController $eventController, EventModel $eventModel)
+    public function __construct(Controller_ShowEvent $eventController, Model_Event $eventModel)
     {
         $this->eventController = $eventController;
         $this->eventModel = $eventModel;

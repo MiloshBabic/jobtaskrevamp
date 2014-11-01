@@ -6,13 +6,13 @@
  * Time: 20:41
  */
 
-class EventGenerator
+class Utility_EventGenerator
 {
 
     /*
      *  Generates events which have recurring type : weekly
      */
-    public static function generateWeeklyEvents(EventModel $model)
+    public static function generateWeeklyEvents(Model_Event $model)
     {
         if ($model->getRepetitionCycle() == 0)
             $model->setRepetitionCycle(1);
@@ -113,7 +113,7 @@ class EventGenerator
     /*
      *  Generates events which have recurring type : yearly
      */
-    public static function generateYearlyEvents(EventModel $model)
+    public static function generateYearlyEvents(Model_Event $model)
     {
         if ($model->getRepetitionCycle() == 0)
             $model->setRepetitionCycle(1);
@@ -149,7 +149,7 @@ class EventGenerator
     /*
      *  Generates events which have recurring type : daily
      */
-    public static function generateDailyEvents(EventModel $model)
+    public static function generateDailyEvents(Model_Event $model)
     {
 
         if ($model->getRepetitionCycle() == 0)
@@ -189,7 +189,7 @@ class EventGenerator
     /*
      *  Generates events which have recurring type : monday-wednesday-friday
      */
-    public static function generateMondayWednesdayFridayEvents(EventModel $model)
+    public static function generateMondayWednesdayFridayEvents(Model_Event $model)
     {
         /*
          * Find first monday, first wednesday and first friday
@@ -258,32 +258,32 @@ class EventGenerator
     /*
      *  Generates all events
      */
-    public static function generateEvents(EventModel $model)
+    public static function generateEvents(Model_Event $model)
     {
         /*
          *  RECURRING TYPE WEEKLY
          */
 
         if ($model->getRecurringType() == "WEEKLY")
-            EventGenerator::generateWeeklyEvents($model);
+            Utility_EventGenerator::generateWeeklyEvents($model);
 
         /*
          * RECURRING TYPE YEARLY
          */
         else if ($model->getRecurringType() == "YEARLY")
-            EventGenerator::generateYearlyEvents($model);
+            Utility_EventGenerator::generateYearlyEvents($model);
 
         /*
          * RECURRING TYPE DAILY
          */
         else if ($model->getRecurringType() == "DAILY")
-            EventGenerator::generateDailyEvents($model);
+            Utility_EventGenerator::generateDailyEvents($model);
 
         /*
          *  RECURRING TYPE MONDAY - WEDNESDAY - FRIDAY
          */
         else if ($model->getRecurringType() == "MWF")
-            EventGenerator::generateMondayWednesdayFridayEvents($model);
+            Utility_EventGenerator::generateMondayWednesdayFridayEvents($model);
 
         else {
             /*
@@ -291,25 +291,25 @@ class EventGenerator
              */
             $model->getDataForCustomType();
             if ($model->getCustomRecurringTypeForName($model->getRecurringType()) == "WEEKLY")
-                EventGenerator::generateWeeklyEvents($model);
+                Utility_EventGenerator::generateWeeklyEvents($model);
 
             /*
              * RECURRING TYPE YEARLY
              */
             else if ($model->getCustomRecurringTypeForName($model->getRecurringType()) == "YEARLY")
-                EventGenerator::generateYearlyEvents($model);
+                Utility_EventGenerator::generateYearlyEvents($model);
 
             /*
              * RECURRING TYPE DAILY
              */
             else if ($model->getCustomRecurringTypeForName($model->getRecurringType()) == "DAILY")
-                EventGenerator::generateDailyEvents($model);
+                Utility_EventGenerator::generateDailyEvents($model);
 
             /*
              *  RECURRING TYPE MONDAY - WEDNESDAY - FRIDAY
              */
             else if ($model->getCustomRecurringTypeForName($model->getRecurringType()) == "MWF")
-                EventGenerator::generateMondayWednesdayFridayEvents($model);
+                Utility_EventGenerator::generateMondayWednesdayFridayEvents($model);
         }
     }
 }

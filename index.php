@@ -1,16 +1,17 @@
 <?php
 
-    include('Utility/EventGenerator.php');
-    include('Model/EventModel.php');
-    include('Model/RecurringTypeModel.php');
+    function __autoload($class_name)
+    {
 
-    include('Controller/EventController.php');
-    include('Controller/RecurringTypeController.php');
-    include('Controller/ShowEventController.php');
+        $filename = str_replace("_", "/", $class_name). ".php";
 
-    include('View/ShowEventView.php');
-    include('View/CreateEventView.php');
-    include('View/RecurringTypeView.php');
+        if(file_exists($filename))
+        {
+            include $filename;
+        }
+        else
+            throw new Exception("Unable to load $class_name");
+    }
 
     /*
      * Gets page parameter
@@ -23,21 +24,21 @@
     $data = array();
 
     /*
-     *  Static routing
+     *  I have decided to go with static routing because of the project size
      *  if the page parameter is empty set the MVC triad to Show Event
      */
     if(!empty($page))
     {
         $data = array(
-            'showevents' => array('model' => 'EventModel', 'controller' => 'ShowEventController', 'view' => 'ShowEventView'),
-            'createevent' => array('recModel' => 'RecurringTypeModel', 'evModel' => 'EventModel', 'controller' => 'EventController', 'view' => 'CreateEventView'),
-            'createrecurringtype' => array('model' => 'RecurringTypeModel', 'controller' => 'RecurringTypeController', 'view' => 'RecurringTypeView')
+            'showevents' => array('model' => 'Model_Event', 'controller' => 'Controller_ShowEvent', 'view' => 'View_ShowEvent'),
+            'createevent' => array('recModel' => 'Model_RecurringType', 'evModel' => 'Model_Event', 'controller' => 'Controller_Event', 'view' => 'View_CreateEvent'),
+            'createrecurringtype' => array('model' => 'Model_RecurringType', 'controller' => 'Controller_RecurringType', 'view' => 'View_RecurringType')
         );
     }
     else
     {
         $data = array(
-            "" => array('model' => 'EventModel', 'controller' => 'ShowEventController', 'view' => 'ShowEventView')
+            "" => array('model' => 'Model_Event', 'controller' => 'Controller_ShowEvent', 'view' => 'View_ShowEvent')
         );
     }
 

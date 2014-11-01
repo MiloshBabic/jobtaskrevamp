@@ -6,7 +6,7 @@
  * Time: 14:30
  */
 
-class RecurringTypeModel
+class Model_RecurringType
 {
     private $title;
     private $recurringType;
